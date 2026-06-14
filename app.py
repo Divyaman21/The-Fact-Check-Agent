@@ -549,7 +549,7 @@ with st.sidebar:
     api_key = st.text_input(
         "Gemini API Key",
         type="password",
-        value=os.getenv("GOOGLE_API_KEY", ""),
+        value=os.environ.get("GOOGLE_API_KEY") or (st.secrets["GOOGLE_API_KEY"] if "GOOGLE_API_KEY" in st.secrets else "") or "",
         help="Get your key at https://aistudio.google.com/apikey",
         placeholder="Enter your Gemini API key...",
     )
